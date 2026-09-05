@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/site-config";
+import { socialIcons } from "@/components/icons";
 
 export function Footer() {
   return (
@@ -9,17 +10,21 @@ export function Footer() {
         </p>
 
         <div className="flex gap-4">
-          {siteConfig.social.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          ))}
+          {siteConfig.social.map((link) => {
+            const Icon = socialIcons[link.icon];
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={link.label}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition-colors hover:border-accent hover:text-accent"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            );
+          })}
         </div>
       </div>
     </footer>

@@ -11,7 +11,7 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="scroll-mt-24 pb-8">
+    <section className="pb-8">
       <div className="mx-auto max-w-5xl px-6">
         <div className="glass grid grid-cols-2 gap-6 rounded-2xl p-8 sm:grid-cols-4">
           {stats.map((stat, i) => (

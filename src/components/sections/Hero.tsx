@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[calc(100dvh-69px)] scroll-mt-24 items-center"
+      className="relative flex min-h-[calc(100dvh-69px)] items-center"
     >
       <div className="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-14 px-6 sm:grid-cols-[1fr_auto]">
         <div>

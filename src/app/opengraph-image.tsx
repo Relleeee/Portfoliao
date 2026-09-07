@@ -1,10 +1,11 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/site-config";
 
+export const dynamic = "force-static";
+
 export const alt = `${siteConfig.name} — Software Engineer & Computer Science Student`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-
 export default function OpengraphImage() {
   return new ImageResponse(
     (
@@ -32,7 +33,6 @@ export default function OpengraphImage() {
         >
           Portfolio
         </div>
-
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div style={{ display: "flex", fontSize: 84, fontWeight: 700, lineHeight: 1.05 }}>
             {siteConfig.name}
@@ -41,7 +41,6 @@ export default function OpengraphImage() {
             {siteConfig.role}
           </div>
         </div>
-
         <div
           style={{
             display: "flex",

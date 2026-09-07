@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Mail, FileDown } from "lucide-react";
+import { Mail, FileDown, ArrowDown } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { socialIcons } from "@/components/icons";
 import { RotatingText } from "@/components/ui/RotatingText";
@@ -8,35 +8,56 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="flex min-h-[calc(100vh-65px)] scroll-mt-20 items-center"
+      className="relative flex min-h-[calc(100dvh-69px)] scroll-mt-24 items-center"
     >
-      <div className="mx-auto grid max-w-5xl grid-cols-1 items-center gap-12 px-6 sm:grid-cols-[1fr_auto]">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-14 px-6 sm:grid-cols-[1fr_auto]">
         <div>
-          <p className="font-mono text-sm text-accent">Hi, my name is</p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-6xl">
-            {siteConfig.name}
-          </h1>
-          <p className="mt-3 text-lg text-muted">
-            And I am a{" "}
-            <span className="font-medium text-foreground">
-              <RotatingText words={siteConfig.roles} />
-            </span>
+          <p
+            className="enter flex items-center gap-2 font-mono text-sm text-accent"
+            style={{ animationDelay: "0ms" }}
+          >
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent pulse-dot" />
+            Hi, my name is
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
-            >
+          <h1
+            className="enter mt-4 text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl"
+            style={{ animationDelay: "80ms" }}
+          >
+            <span className="block">Joshua Rhei</span>
+            <span className="block text-gradient">J. Liao</span>
+          </h1>
+
+          <p
+            className="enter mt-5 text-lg text-muted"
+            style={{ animationDelay: "160ms" }}
+          >
+            And I am a <RotatingText words={siteConfig.roles} />
+          </p>
+
+          <p
+            className="enter mt-4 max-w-md text-sm leading-relaxed text-muted"
+            style={{ animationDelay: "220ms" }}
+          >
+            Computer Science undergraduate at the University of Roehampton,
+            building full-stack web apps end to end — from database schema to the
+            pixels on screen.
+          </p>
+
+          <div
+            className="enter mt-9 flex flex-wrap items-center gap-4"
+            style={{ animationDelay: "300ms" }}
+          >
+            <a href="#contact" className="btn-primary">
               <Mail className="h-4 w-4" />
-              Contact Me
+              Get in touch
             </a>
             {siteConfig.resumeUrl && (
               <a
                 href={siteConfig.resumeUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+                className="btn-ghost"
               >
                 <FileDown className="h-4 w-4" />
                 View CV
@@ -44,7 +65,10 @@ export function Hero() {
             )}
           </div>
 
-          <div className="mt-8 flex gap-3">
+          <div
+            className="enter mt-9 flex gap-3"
+            style={{ animationDelay: "380ms" }}
+          >
             {siteConfig.social.map((link) => {
               const Icon = socialIcons[link.icon];
               return (
@@ -54,7 +78,7 @@ export function Hero() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={link.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-accent hover:text-accent"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-[0_8px_24px_-8px_var(--glow)]"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -63,15 +87,47 @@ export function Hero() {
           </div>
         </div>
 
-        <Image
-          src={siteConfig.profileImage}
-          alt={siteConfig.name}
-          width={220}
-          height={220}
-          priority
-          className="mx-auto h-40 w-40 rounded-full border border-border object-cover sm:h-56 sm:w-56"
-        />
+        <div
+          className="enter relative mx-auto"
+          style={{ animationDelay: "240ms" }}
+        >
+          <div
+            className="spin-slow absolute -inset-6 rounded-full opacity-70 blur-2xl"
+            style={{
+              background:
+                "conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent))",
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="float relative rounded-full p-[2px]"
+            style={{
+              background:
+                "conic-gradient(from 120deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent))",
+            }}
+          >
+            <Image
+              src={siteConfig.profileImage}
+              alt={siteConfig.name}
+              width={260}
+              height={260}
+              priority
+              className="h-44 w-44 rounded-full border border-background/40 object-cover sm:h-60 sm:w-60"
+            />
+          </div>
+        </div>
       </div>
+
+      <a
+        href="#about"
+        aria-label="Scroll to about section"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-muted transition-colors hover:text-accent sm:flex"
+      >
+        <span className="font-mono text-[0.65rem] uppercase tracking-[0.3em]">
+          Scroll
+        </span>
+        <ArrowDown className="bob h-4 w-4" />
+      </a>
     </section>
   );
 }

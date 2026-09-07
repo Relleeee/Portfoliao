@@ -1,6 +1,14 @@
+// Canonical origin used for SEO metadata (canonical URLs, sitemap, OG tags).
+// Override per-environment with NEXT_PUBLIC_SITE_URL; the fallback is the
+// intended production domain.
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfoliao.dev"
+).replace(/\/$/, "");
+
 export const siteConfig = {
   name: "Joshua Rhei J. Liao",
   shortName: "Joshua Liao",
+  url: siteUrl,
   role: "Software Engineer & Computer Science Student",
   roles: [
     "Software Engineer",

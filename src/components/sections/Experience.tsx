@@ -4,6 +4,7 @@ import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { siteConfig } from "@/lib/site-config";
+import { withBasePath } from "@/lib/asset";
 
 export function Experience() {
   return (
@@ -21,7 +22,7 @@ export function Experience() {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex items-center gap-4">
                     <Image
-                      src={job.logo}
+                      src={withBasePath(job.logo)}
                       alt={job.company}
                       width={48}
                       height={48}

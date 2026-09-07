@@ -3,6 +3,7 @@ import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { siteConfig } from "@/lib/site-config";
+import { withBasePath } from "@/lib/asset";
 
 export function About() {
   return (
@@ -18,7 +19,7 @@ export function About() {
               }}
             >
               <Image
-                src={siteConfig.profileImage}
+                src={withBasePath(siteConfig.profileImage)}
                 alt={siteConfig.name}
                 width={200}
                 height={200}

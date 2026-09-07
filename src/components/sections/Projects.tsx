@@ -4,6 +4,7 @@ import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { siteConfig } from "@/lib/site-config";
+import { withBasePath } from "@/lib/asset";
 
 export function Projects() {
   const [featured, ...rest] = siteConfig.projects;
@@ -56,7 +57,7 @@ export function Projects() {
             >
               <div className="relative h-44 w-full overflow-hidden">
                 <Image
-                  src={project.image}
+                  src={withBasePath(project.image)}
                   alt={`${project.name} screenshot`}
                   fill
                   sizes="(max-width: 640px) 100vw, 50vw"

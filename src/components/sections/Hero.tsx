@@ -3,6 +3,7 @@ import { Mail, FileDown, ArrowDown } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { socialIcons } from "@/components/icons";
 import { RotatingText } from "@/components/ui/RotatingText";
+import { withBasePath } from "@/lib/asset";
 
 export function Hero() {
   return (
@@ -107,7 +108,7 @@ export function Hero() {
             }}
           >
             <Image
-              src={siteConfig.profileImage}
+              src={withBasePath(siteConfig.profileImage)}
               alt={siteConfig.name}
               width={260}
               height={260}

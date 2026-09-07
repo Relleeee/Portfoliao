@@ -4,6 +4,7 @@ import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { siteConfig } from "@/lib/site-config";
+import { withBasePath } from "@/lib/asset";
 
 export function Education() {
   return (
@@ -36,7 +37,7 @@ export function Education() {
           </blockquote>
           <figcaption className="mt-5 flex items-center gap-4">
             <Image
-              src={siteConfig.testimonial.image}
+              src={withBasePath(siteConfig.testimonial.image)}
               alt={siteConfig.testimonial.name}
               width={56}
               height={56}

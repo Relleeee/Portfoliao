@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { Mail, FileDown, ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight, FileDown, Mail, Music } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { socialIcons } from "@/components/icons";
-import { RotatingText } from "@/components/ui/RotatingText";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { withBasePath } from "@/lib/asset";
 import type { CSSProperties } from "react";
@@ -24,7 +22,20 @@ const SPARKLES = [
   [42, 78, 2, 2.9, 4.8],
 ] as const;
 
+// Screenshots stacked behind the ChordScribe card, back to front.
+const SHOWCASE = [
+  { name: "Rehearsa", className: "right-0 top-2 w-[300px]", rotate: 5, delay: 0.35, float: -2 },
+  { name: "Gainzly", className: "left-0 top-16 w-[290px]", rotate: -6, delay: 0.5, float: 0 },
+  { name: "SariTap", className: "right-6 top-[13.5rem] w-[250px]", rotate: 2, delay: 0.65, float: -4 },
+] as const;
+
+const CHORDS = ["Am", "F", "C", "G"];
+
+const HEADLINE = "From idea";
+
 export function Hero() {
+  const projects = siteConfig.projects;
+
   return (
     <section
       id="home"
@@ -48,54 +59,61 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="hero-parallax relative mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-14 px-6 sm:grid-cols-[1fr_auto]">
+      <div className="hero-parallax relative mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-14 px-6 md:grid-cols-[1fr_auto]">
         <div>
-          <p
-            className="enter flex items-center gap-2 font-mono text-sm text-accent"
+          <a
+            href="#projects"
+            className="enter glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs text-muted transition-colors hover:text-foreground"
             style={{ animationDelay: "0ms" }}
           >
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent pulse-dot" />
-            Hi, my name is
-          </p>
+            Now building <span className="font-medium text-foreground">ChordScribe</span>
+            <ArrowRight className="h-3 w-3" />
+          </a>
 
           <h1
-            className="mt-4 text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl"
-            aria-label={siteConfig.name}
+            className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl"
+            aria-label="From idea to shipped."
           >
             <span className="block" aria-hidden="true">
-              {[..."Joshua Rhei"].map((char, i) => (
+              {[...HEADLINE].map((char, i) => (
                 <span key={i} className="char" style={{ "--i": i } as CSSProperties}>
                   {char === " " ? " " : char}
                 </span>
               ))}
             </span>
             <span className="wipe-in" aria-hidden="true">
-              <span className="text-gradient">J. Liao</span>
+              <span className="text-gradient">to shipped.</span>
             </span>
           </h1>
 
           <p
-            className="enter mt-5 text-lg text-muted"
-            style={{ animationDelay: "160ms" }}
+            className="enter mt-6 max-w-md text-base leading-relaxed text-muted"
+            style={{ animationDelay: "380ms" }}
           >
-            And I am a <RotatingText words={siteConfig.roles} />
+            I design, build and test full-stack web apps — from the database
+            schema to the pixels on screen, and every edge case in between.
           </p>
 
           <p
-            className="enter mt-4 max-w-md text-sm leading-relaxed text-muted"
-            style={{ animationDelay: "220ms" }}
+            className="enter mt-4 font-mono text-xs tracking-wide text-accent"
+            style={{ animationDelay: "440ms" }}
           >
-            Computer Science undergraduate at the University of Roehampton,
-            building full-stack web apps end to end — from database schema to the
-            pixels on screen.
+            {"// full-stack · ui/ux · qa testing"}
           </p>
 
           <div
             className="enter mt-9 flex flex-wrap items-center gap-4"
-            style={{ animationDelay: "300ms" }}
+            style={{ animationDelay: "500ms" }}
           >
             <Magnetic>
-              <a href="#contact" className="btn-primary">
+              <a href="#projects" className="btn-primary">
+                See my work
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a href="#contact" className="btn-ghost">
                 <Mail className="h-4 w-4" />
                 Get in touch
               </a>
@@ -114,58 +132,98 @@ export function Hero() {
               </Magnetic>
             )}
           </div>
-
-          <div
-            className="enter mt-9 flex gap-3"
-            style={{ animationDelay: "380ms" }}
-          >
-            {siteConfig.social.map((link) => {
-              const Icon = socialIcons[link.icon];
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={link.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-[0_8px_24px_-8px_var(--glow)]"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              );
-            })}
-          </div>
         </div>
 
-        <div
-          className="enter relative mx-auto"
-          style={{ animationDelay: "240ms" }}
+        <a
+          href="#projects"
+          aria-label="Jump to projects"
+          className="relative hidden h-[25rem] w-[27rem] md:block"
         >
           <div
-            className="spin-slow absolute -inset-6 rounded-full opacity-70 blur-2xl"
+            className="spin-slow absolute inset-10 rounded-full opacity-40 blur-3xl"
             style={{
               background:
                 "conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent))",
             }}
             aria-hidden="true"
           />
+
+          {SHOWCASE.map((shot) => {
+            const project = projects.find((p) => p.name === shot.name);
+            if (!project || !("image" in project)) return null;
+            return (
+              <div
+                key={shot.name}
+                className={`enter absolute ${shot.className}`}
+                style={{
+                  animationDelay: `${shot.delay}s`,
+                  rotate: `${shot.rotate}deg`,
+                }}
+              >
+                <div
+                  className="float overflow-hidden rounded-xl border border-border bg-surface shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)]"
+                  style={{ animationDelay: `${shot.float}s` }}
+                >
+                  <div className="flex items-center gap-1.5 border-b border-border px-3 py-2">
+                    <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                    <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                    <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                    <span className="ml-2 font-mono text-[10px] text-muted">
+                      {shot.name.toLowerCase()}
+                    </span>
+                  </div>
+                  <Image
+                    src={withBasePath(project.image)}
+                    alt=""
+                    width={600}
+                    height={352}
+                    className="aspect-[1.7] w-full object-cover"
+                  />
+                </div>
+              </div>
+            );
+          })}
+
           <div
-            className="float relative rounded-full p-[2px]"
-            style={{
-              background:
-                "conic-gradient(from 120deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent))",
-            }}
+            className="enter absolute bottom-0 left-2 z-10 w-64"
+            style={{ animationDelay: "0.85s" }}
           >
-            <Image
-              src={withBasePath(siteConfig.profileImage)}
-              alt={siteConfig.name}
-              width={260}
-              height={260}
-              priority
-              className="h-44 w-44 rounded-full border border-background/40 object-cover sm:h-60 sm:w-60"
-            />
+            <div
+              className="float rounded-2xl border border-border bg-surface/90 p-4 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)] backdrop-blur-xl"
+              style={{ animationDelay: "-3s" }}
+            >
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent">
+                  <Music className="h-4 w-4" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold">ChordScribe</p>
+                  <p className="text-[11px] text-muted">Transcribing chords…</p>
+                </div>
+                <div className="flex h-6 items-end gap-[3px]" aria-hidden="true">
+                  {[0, 0.3, 0.15, 0.45, 0.2].map((d, i) => (
+                    <span
+                      key={i}
+                      className="eq-bar w-[3px] rounded-full bg-gradient-to-t from-accent to-accent-2"
+                      style={{ "--d": `${-d}s` } as CSSProperties}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="mt-3 grid grid-cols-4 gap-2">
+                {CHORDS.map((chord, i) => (
+                  <span
+                    key={chord}
+                    className="chord rounded-md border border-border py-1.5 text-center font-mono text-xs text-muted"
+                    style={{ "--i": i } as CSSProperties}
+                  >
+                    {chord}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
       <a

@@ -623,6 +623,39 @@ html[data-spot="on"] .pointer-glow {
   50% { opacity: 0.9; transform: scale(1); }
 }
 
+/* Hero ChordScribe card: chords light up in turn over a bouncing equaliser. */
+.chord {
+  animation: chord-on 4s infinite;
+  animation-delay: calc(var(--i, 0) * 1s);
+}
+
+@keyframes chord-on {
+  0%, 22% {
+    color: var(--accent-foreground);
+    background: linear-gradient(120deg, var(--accent), var(--accent-3));
+    border-color: transparent;
+    box-shadow: 0 6px 18px -6px var(--glow);
+  }
+  27%, 100% {
+    color: var(--muted);
+    background: transparent;
+    border-color: var(--border);
+    box-shadow: none;
+  }
+}
+
+.eq-bar {
+  height: 100%;
+  transform-origin: bottom;
+  animation: eq 0.9s ease-in-out infinite alternate;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes eq {
+  from { transform: scaleY(0.25); }
+  to { transform: scaleY(1); }
+}
+
 /* Pointer-attracted wrapper (see components/ui/Magnetic.tsx). */
 .magnetic {
   display: inline-flex;
@@ -742,6 +775,15 @@ html[data-spot="on"] .pointer-glow {
 
   .hero-parallax {
     animation: none !important;
+  }
+
+  .chord,
+  .eq-bar {
+    animation: none !important;
+  }
+
+  .eq-bar {
+    transform: scaleY(0.6);
   }
 
   .sparkle,

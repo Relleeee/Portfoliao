@@ -14,6 +14,7 @@ export const siteConfig = {
     "Software Engineer",
     "Full-Stack Developer",
     "UI/UX Designer",
+    "QA Tester",
   ],
   email: "liaojoshuarhei@gmail.com",
   // Set once a public resume link is available; the CV button hides until then.

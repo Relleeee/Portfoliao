@@ -1,6 +1,7 @@
 import { Mail } from "lucide-react";
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { Magnetic } from "@/components/ui/Magnetic";
 import { siteConfig } from "@/lib/site-config";
 import { socialIcons } from "@/components/icons";
 
@@ -26,13 +27,14 @@ export function Contact() {
             engineers, designers, and builders. Feel free to reach out.
           </p>
 
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="btn-primary mx-auto mt-8"
-          >
-            <Mail className="h-4 w-4" />
-            {siteConfig.email}
-          </a>
+          <div className="mt-8">
+            <Magnetic>
+              <a href={`mailto:${siteConfig.email}`} className="btn-primary">
+                <Mail className="h-4 w-4" />
+                {siteConfig.email}
+              </a>
+            </Magnetic>
+          </div>
 
           <div className="mt-8 flex justify-center gap-3">
             {siteConfig.social.map((link) => {

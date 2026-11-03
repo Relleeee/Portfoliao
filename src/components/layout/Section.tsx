@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function Section({
@@ -27,9 +27,16 @@ export function Section({
               )}
               <div className="flex items-center gap-5">
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                  {title}
+                  {title.split(" ").map((word, i) => (
+                    <span key={i}>
+                      {i > 0 && " "}
+                      <span className="word" style={{ "--i": i } as CSSProperties}>
+                        {word}
+                      </span>
+                    </span>
+                  ))}
                 </h2>
-                <span className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+                <span className="line-draw h-px flex-1 bg-gradient-to-r from-accent/60 via-border to-transparent" />
               </div>
             </div>
           </Reveal>

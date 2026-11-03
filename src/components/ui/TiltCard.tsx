@@ -56,6 +56,7 @@ export function TiltCard({
       onPointerLeave={reset}
       className={`tilt-card ${className}`}
     >
+      <span className="tilt-border" aria-hidden="true" />
       {children}
     </div>
   );

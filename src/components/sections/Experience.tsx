@@ -9,7 +9,12 @@ import { withBasePath } from "@/lib/asset";
 export function Experience() {
   return (
     <Section id="experience" title="Experience" eyebrow="Where I've worked">
-      <div className="relative space-y-8 border-l border-border pl-8 sm:pl-10">
+      <div className="relative space-y-8 pl-8 sm:pl-10">
+        <span className="absolute inset-y-0 left-0 w-px bg-border" aria-hidden="true" />
+        <span
+          className="timeline-fill absolute inset-y-0 left-0 w-px bg-gradient-to-b from-accent via-accent-3 to-accent-2 shadow-[0_0_10px_var(--glow)]"
+          aria-hidden="true"
+        />
         {siteConfig.experience.map((job, i) => (
           <Reveal key={`${job.company}-${job.duration}`} delay={i * 90}>
             <div className="relative">
@@ -59,7 +64,7 @@ export function Experience() {
                   </div>
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="stagger mt-4 flex flex-wrap gap-2">
                   {job.skills.map((skill) => (
                     <span
                       key={skill}

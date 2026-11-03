@@ -68,6 +68,21 @@ export const siteConfig = {
       ],
     },
     {
+      category: "QA Testing",
+      description:
+        "Breaking things on purpose so users don't — designing test cases, chasing edge cases, and writing clear, reproducible bug reports.",
+      tags: [
+        "UI Testing",
+        "Chatbot Testing",
+        "In-depth Functional Testing",
+        "Regression Testing",
+        "Exploratory Testing",
+        "Cross-browser & Mobile Testing",
+        "Test Case Design",
+        "Bug Reporting",
+      ],
+    },
+    {
       category: "UI/UX Design",
       description:
         "Designing and prototyping interfaces before writing a line of code.",
@@ -161,28 +176,56 @@ export const siteConfig = {
       status: "BSc Final Year Project — in development",
     },
     {
+      name: "Gainzly",
+      description:
+        "An all-in-one fitness app: auto-generated gym sessions with progressive-overload coaching, BMI-based macro targets with adaptive calories, run tracking, and a social feed with draggable chat bubbles.",
+      image: "/images/projects/gainzly.png",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "OAuth"],
+      status: "In development",
+    },
+    {
+      name: "SariTap",
+      description:
+        "A tablet self-service kiosk for Filipino sari-sari stores — browse 80+ items, pay by cash, GCash, Maya, or card (simulated), in English or Filipino, plus a hidden owner panel for sales and stock.",
+      image: "/images/projects/saritap.png",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "i18n"],
+      status: "v1 complete",
+    },
+    {
+      name: "Rehearsa",
+      description:
+        "A mock-interview coach that asks real questions for your field — read aloud or shown as text — takes spoken or typed answers, and tells you how to improve, with an anti-cheat integrity check.",
+      image: "/images/projects/rehearsa.png",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "OAuth"],
+      status: "In development",
+    },
+    {
       name: "ABC Learning Center",
       description: "A learning center site built as a full front-to-back web module.",
       image: "/images/projects/abc-learning-center.png",
       tags: ["HTML", "CSS", "JavaScript"],
+      earlier: true,
     },
     {
       name: "ABC Job Portal",
       description: "A job portal with listing search, applications, and account registration.",
       image: "/images/projects/abc-job-portal.png",
       tags: ["HTML", "CSS", "JavaScript"],
+      earlier: true,
     },
     {
       name: "Meals On Wheels",
       description: "A food ordering and delivery site with account and checkout flows.",
       image: "/images/projects/meals-on-wheels.png",
       tags: ["HTML", "CSS", "JavaScript"],
+      earlier: true,
     },
     {
       name: "Jumpstart E-Commerce",
       description: "An e-commerce storefront with cart, wishlist, and checkout.",
       image: "/images/projects/jumpstart-ecommerce.png",
       tags: ["HTML", "CSS", "JavaScript"],
+      earlier: true,
     },
   ],
   education: [

@@ -3,7 +3,26 @@ import { Mail, FileDown, ArrowDown } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { socialIcons } from "@/components/icons";
 import { RotatingText } from "@/components/ui/RotatingText";
+import { Magnetic } from "@/components/ui/Magnetic";
 import { withBasePath } from "@/lib/asset";
+import type { CSSProperties } from "react";
+
+// [top %, left %, size px, delay s, duration s] — fixed so server and client
+// render identically.
+const SPARKLES = [
+  [12, 8, 3, 0, 4.2],
+  [22, 46, 2, 1.4, 5.1],
+  [9, 72, 3, 2.6, 3.8],
+  [34, 92, 2, 0.8, 4.6],
+  [58, 4, 2, 3.1, 5.4],
+  [70, 38, 3, 1.9, 4.1],
+  [82, 64, 2, 0.4, 3.6],
+  [48, 58, 2, 2.2, 5.8],
+  [88, 14, 3, 3.6, 4.4],
+  [64, 86, 3, 1.1, 3.9],
+  [28, 24, 2, 4.2, 5.2],
+  [42, 78, 2, 2.9, 4.8],
+] as const;
 
 export function Hero() {
   return (
@@ -11,7 +30,25 @@ export function Hero() {
       id="home"
       className="relative flex min-h-[calc(100dvh-69px)] items-center"
     >
-      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-14 px-6 sm:grid-cols-[1fr_auto]">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        {SPARKLES.map(([top, left, size, delay, duration], i) => (
+          <span
+            key={i}
+            className="sparkle"
+            style={
+              {
+                top: `${top}%`,
+                left: `${left}%`,
+                "--s": `${size}px`,
+                "--d": `${delay}s`,
+                "--t": `${duration}s`,
+              } as CSSProperties
+            }
+          />
+        ))}
+      </div>
+
+      <div className="hero-parallax relative mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-14 px-6 sm:grid-cols-[1fr_auto]">
         <div>
           <p
             className="enter flex items-center gap-2 font-mono text-sm text-accent"
@@ -22,11 +59,19 @@ export function Hero() {
           </p>
 
           <h1
-            className="enter mt-4 text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl"
-            style={{ animationDelay: "80ms" }}
+            className="mt-4 text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl"
+            aria-label={siteConfig.name}
           >
-            <span className="block">Joshua Rhei</span>
-            <span className="block text-gradient">J. Liao</span>
+            <span className="block" aria-hidden="true">
+              {[..."Joshua Rhei"].map((char, i) => (
+                <span key={i} className="char" style={{ "--i": i } as CSSProperties}>
+                  {char === " " ? " " : char}
+                </span>
+              ))}
+            </span>
+            <span className="wipe-in" aria-hidden="true">
+              <span className="text-gradient">J. Liao</span>
+            </span>
           </h1>
 
           <p
@@ -49,20 +94,24 @@ export function Hero() {
             className="enter mt-9 flex flex-wrap items-center gap-4"
             style={{ animationDelay: "300ms" }}
           >
-            <a href="#contact" className="btn-primary">
-              <Mail className="h-4 w-4" />
-              Get in touch
-            </a>
-            {siteConfig.resumeUrl && (
-              <a
-                href={siteConfig.resumeUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="btn-ghost"
-              >
-                <FileDown className="h-4 w-4" />
-                View CV
+            <Magnetic>
+              <a href="#contact" className="btn-primary">
+                <Mail className="h-4 w-4" />
+                Get in touch
               </a>
+            </Magnetic>
+            {siteConfig.resumeUrl && (
+              <Magnetic>
+                <a
+                  href={siteConfig.resumeUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="btn-ghost"
+                >
+                  <FileDown className="h-4 w-4" />
+                  View CV
+                </a>
+              </Magnetic>
             )}
           </div>
 

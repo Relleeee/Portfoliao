@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Music } from "lucide-react";
+import { ArrowUpRight, Music } from "lucide-react";
+import { socialIcons } from "@/components/icons";
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
@@ -13,7 +14,45 @@ type Project = {
   image?: string;
   status?: string;
   earlier?: boolean;
+  repoUrl?: string;
+  liveUrl?: string;
 };
+
+function ProjectLinks({ project }: { project: Project }) {
+  if (!project.repoUrl && !project.liveUrl) return null;
+  const Github = socialIcons.github;
+  const linkClass =
+    "inline-flex items-center gap-1.5 text-xs font-medium text-muted transition-colors hover:text-accent";
+
+  return (
+    <div className="mt-auto flex flex-wrap gap-4 pt-5">
+      {project.liveUrl && (
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={`${project.name} live site`}
+          className={linkClass}
+        >
+          <ArrowUpRight className="h-3.5 w-3.5" />
+          Live site
+        </a>
+      )}
+      {project.repoUrl && (
+        <a
+          href={project.repoUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={`${project.name} source code on GitHub`}
+          className={linkClass}
+        >
+          <Github className="h-3.5 w-3.5" />
+          Source
+        </a>
+      )}
+    </div>
+  );
+}
 
 export function Projects() {
   const [featured, ...rest]: readonly Project[] = siteConfig.projects;
@@ -55,6 +94,7 @@ export function Projects() {
                 </span>
               ))}
             </div>
+            <ProjectLinks project={featured} />
           </div>
         </TiltCard>
       </Reveal>
@@ -85,7 +125,7 @@ export function Projects() {
 
 function ProjectCard({ project, compact = false }: { project: Project; compact?: boolean }) {
   return (
-    <TiltCard className="glass group h-full overflow-hidden rounded-2xl" max={4}>
+    <TiltCard className="glass group flex h-full flex-col overflow-hidden rounded-2xl" max={4}>
       <div className={`img-reveal relative w-full overflow-hidden ${compact ? "h-32" : "h-44"}`}>
         {project.image && (
           <Image
@@ -98,7 +138,7 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
       </div>
-      <div className={compact ? "p-5" : "p-6"}>
+      <div className={`flex flex-1 flex-col ${compact ? "p-5" : "p-6"}`}>
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="font-semibold">{project.name}</h3>
           {project.status && (
@@ -118,6 +158,7 @@ function ProjectCard({ project, compact = false }: { project: Project; compact?:
             </span>
           ))}
         </div>
+        <ProjectLinks project={project} />
       </div>
     </TiltCard>
   );

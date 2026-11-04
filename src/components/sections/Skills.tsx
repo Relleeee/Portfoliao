@@ -1,4 +1,11 @@
-import { Bug, Code2, Palette, Clapperboard, type LucideIcon } from "lucide-react";
+import {
+  Bug,
+  Code2,
+  Palette,
+  Clapperboard,
+  MessagesSquare,
+  type LucideIcon,
+} from "lucide-react";
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
@@ -7,6 +14,7 @@ import { siteConfig } from "@/lib/site-config";
 const categoryIcons: Record<string, LucideIcon> = {
   "Software Development": Code2,
   "QA Testing": Bug,
+  Communication: MessagesSquare,
   "UI/UX Design": Palette,
   "Video Editing": Clapperboard,
 };
@@ -20,7 +28,15 @@ export function Skills() {
         {siteConfig.skills.map((group, i) => {
           const Icon = categoryIcons[group.category] ?? Code2;
           return (
-            <Reveal key={group.category} delay={i * 110}>
+            <Reveal
+              key={group.category}
+              delay={i * 110}
+              className={
+                i === siteConfig.skills.length - 1 && siteConfig.skills.length % 2 === 1
+                  ? "sm:col-span-2"
+                  : undefined
+              }
+            >
               <TiltCard className="glass h-full rounded-2xl p-6">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background/40 text-accent">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />

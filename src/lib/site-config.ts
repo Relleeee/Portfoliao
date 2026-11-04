@@ -84,6 +84,21 @@ export const siteConfig = {
       ],
     },
     {
+      category: "Communication",
+      description:
+        "At HorecaBid I present and demo the product to customers, especially in healthcare, and to suppliers. I join the team's daily and weekly scrums, and I support customers and suppliers directly. That means turning technical detail into plain language and bringing what users tell me back to the team.",
+      tags: [
+        "Client Presentations",
+        "Product Demos",
+        "Healthcare Clients",
+        "Supplier Onboarding",
+        "Customer & Supplier Support",
+        "Daily Scrum",
+        "Weekly Scrum Meetings",
+        "Stakeholder Communication",
+      ],
+    },
+    {
       category: "UI/UX Design",
       description:
         "Designing and prototyping interfaces before writing a line of code.",
@@ -170,6 +185,7 @@ export const siteConfig = {
   projects: [
     {
       name: "ChordScribe",
+      repoUrl: "https://github.com/Relleeee/ChordScribe-FYP",
       description:
         "Turns a song (MP3, MP4, or a YouTube link) into a timestamped, guitar-friendly chord sheet — with fingering diagrams, tab transcription, lyric alignment, and a built-in mic tuner.",
       tags: ["Next.js", "TypeScript", "Python", "FastAPI", "PyTorch", "Prisma"],
@@ -178,6 +194,7 @@ export const siteConfig = {
     },
     {
       name: "Gainzly",
+      repoUrl: "https://github.com/Relleeee/Gainzly",
       description:
         "An all-in-one fitness app: auto-generated gym sessions with progressive-overload coaching, BMI-based macro targets with adaptive calories, run tracking, and a social feed with draggable chat bubbles.",
       image: "/images/projects/gainzly.png",
@@ -186,6 +203,7 @@ export const siteConfig = {
     },
     {
       name: "SariTap",
+      repoUrl: "https://github.com/Relleeee/SariTap",
       description:
         "A tablet self-service kiosk for Filipino sari-sari stores — browse 80+ items, pay by cash, GCash, Maya, or card (simulated), in English or Filipino, plus a hidden owner panel for sales and stock.",
       image: "/images/projects/saritap.png",
@@ -194,6 +212,7 @@ export const siteConfig = {
     },
     {
       name: "Rehearsa",
+      repoUrl: "https://github.com/Relleeee/Rehearsa",
       description:
         "A mock-interview coach that asks real questions for your field — read aloud or shown as text — takes spoken or typed answers, and tells you how to improve, with an anti-cheat integrity check.",
       image: "/images/projects/rehearsa.png",
@@ -202,6 +221,7 @@ export const siteConfig = {
     },
     {
       name: "ABC Learning Center",
+      liveUrl: "https://relleeee.github.io/ABCPortal/",
       description: "A learning center site built as a full front-to-back web module.",
       image: "/images/projects/abc-learning-center.png",
       tags: ["HTML", "CSS", "JavaScript"],
@@ -209,6 +229,7 @@ export const siteConfig = {
     },
     {
       name: "ABC Job Portal",
+      repoUrl: "https://github.com/Relleeee/ABCar",
       description: "A job portal with listing search, applications, and account registration.",
       image: "/images/projects/abc-job-portal.png",
       tags: ["HTML", "CSS", "JavaScript"],
@@ -216,6 +237,7 @@ export const siteConfig = {
     },
     {
       name: "Meals On Wheels",
+      repoUrl: "https://github.com/BDSE-0922-Group/DEA-SA",
       description: "A food ordering and delivery site with account and checkout flows.",
       image: "/images/projects/meals-on-wheels.png",
       tags: ["HTML", "CSS", "JavaScript"],
@@ -223,6 +245,7 @@ export const siteConfig = {
     },
     {
       name: "Jumpstart E-Commerce",
+      repoUrl: "https://github.com/Relleeee/Jumpstart-ecommerce",
       description: "An e-commerce storefront with cart, wishlist, and checkout.",
       image: "/images/projects/jumpstart-ecommerce.png",
       tags: ["HTML", "CSS", "JavaScript"],
